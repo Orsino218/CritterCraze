@@ -8,8 +8,8 @@ public class GameState {
     private BattleRecord battleRecord;
     private Wallet playerWallet;
 
-    public Wallet getWallet() {
-        return playerWallet;
+    public String getFileName() {
+        return this.saveFileName;
     }
 
 }

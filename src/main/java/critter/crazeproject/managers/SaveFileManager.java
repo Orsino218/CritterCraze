@@ -1,6 +1,7 @@
-package critter.crazeproject;
+package critter.crazeproject.managers;
 
 import com.google.gson.Gson;
+import critter.crazeproject.Game;
 import critter.crazeproject.models.GameState;
 
 import java.io.*;
@@ -46,15 +47,14 @@ public class SaveFileManager {
         return list;
     }
 
-    public GameState loadGame(String fileName) {
+    public GameState loadGame(String fileName) throws Exception {
         try (FileReader reader = new FileReader(fileName);
              BufferedReader bReader = new BufferedReader(reader)) {
             String serialized = bReader.readLine();
             return gson.fromJson(serialized, GameState.class);
         }
         catch(Exception e) {
-            //Add exception handling
-            return null;
+            throw new Exception("Sorry, this save game can't be loaded");
         }
     }
 

@@ -11,7 +11,7 @@ import java.util.List;
 public class SaveFileManager {
     public static final SaveFileManager manager = new SaveFileManager();
     private Gson gson;
-    private String SAVE_DIRECTORY = "saves/";
+    private final String SAVE_DIRECTORY = "saves/";
 
     private SaveFileManager() {
         this.gson = new Gson();

@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class CombatUnitManager {
     public static final CombatUnitManager manager = new CombatUnitManager();
-    Map<String, CombatUnit> units;
+    private final Map<String, CombatUnit> units;
 
     private CombatUnitManager() {
         this.units = new HashMap<>();

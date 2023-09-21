@@ -1,13 +1,18 @@
 package critter.crazeproject.models.battle;
 
-public class BattleParticipantStatus {
+public class BattleStatus {
     private int health;
     private int resource;
 
-    public BattleParticipantStatus(int health, int resource) {
+    public BattleStatus(int health, int resource) {
         this.health = health;
         this.resource = resource;
     }
+
+    public void gainResource() {
+        this.resource++;
+    }
+
 
     public int getHealth() {
         return health;

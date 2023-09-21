@@ -9,11 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SaveFileManager {
-    private static final SaveFileManager manager = new SaveFileManager();
+    public static final SaveFileManager manager = new SaveFileManager();
     private Gson gson;
     private String SAVE_DIRECTORY = "saves/";
 
-    public SaveFileManager() {
+    private SaveFileManager() {
         this.gson = new Gson();
 
         File file = new File(SAVE_DIRECTORY);

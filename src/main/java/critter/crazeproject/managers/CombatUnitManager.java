@@ -7,10 +7,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CombatUnitManager {
-    private static final CombatUnitManager manager = new CombatUnitManager();
+    public static final CombatUnitManager manager = new CombatUnitManager();
     Map<String, CombatUnit> units;
 
-    public CombatUnitManager() {
+    private CombatUnitManager() {
         this.units = new HashMap<>();
         try(InputStream inputStream = getClass().getResourceAsStream("/Combat/Units");
             InputStreamReader inputReader = new InputStreamReader(inputStream);

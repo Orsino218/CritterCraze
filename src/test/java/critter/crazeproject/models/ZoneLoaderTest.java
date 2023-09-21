@@ -4,12 +4,12 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MapLoaderTest {
+class ZoneLoaderTest {
 
     @Test
     void loadMap() {
-        MapLoader mapLoader = new MapLoader();
-        Map map = mapLoader.loadMap("MapDesign1");
+        ZoneLoader zoneLoader = new ZoneLoader();
+        Zone map = zoneLoader.loadZone("ZoneDesign1");
         assertEquals(map.getMapLayout().length, 25);
         assertEquals(map.getMapLayout()[0].length, 25);
     }

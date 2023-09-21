@@ -1,25 +1,25 @@
 package critter.crazeproject.models;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class NPC {
-private List<DialogueLines> characterScript;
-private UnitLocation location;
-private Reward payout;
-public NPC(List<DialogueLines> characterScript) {
-    this.characterScript = characterScript;
-}
+    private String name;
+    private Reward reward;
+    private Map<DialogueType, List<String>> dialogue;
+    private UnitLocation location;
 
-    public List<DialogueLines> getCharacterScript() {
-        return characterScript;
+    public String getName() { return name; }
+
+    public Reward getReward() {
+        return reward;
+    }
+
+    public Map<DialogueType, List<String>> getDialogue() {
+        return dialogue;
     }
 
     public UnitLocation getLocation() {
         return location;
-    }
-
-    public void setLocation(UnitLocation location) {
-        this.location = location;
     }
 }

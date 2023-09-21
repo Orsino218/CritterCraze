@@ -1,0 +1,43 @@
+# Character 1
+name: Troll
+reward: { }
+dialogue:
+  GREETING:
+    - I'm hungry!
+  BATTLE:
+    - RAWR! I am going to eat you!
+  VICTORY:
+    - BUUUUUUURP! My tummy is full!
+  DEFEAT:
+    - OH NO! You have defeated me! This won't be the last time you see me, critter!
+  FINAL_WORDS:
+    - GRR!! I'll get you next time!
+location:
+  x: 6
+  y: 8
+---
+# Character 2
+name:
+reward:
+dialogue:
+  GREETING:
+  BATTLE:
+  VICTORY:
+  DEFEAT:
+  FINAL_WORDS:
+location:
+  x:
+  y:
+---
+# Character 3
+name:
+reward:
+dialogue:
+  GREETING:
+  BATTLE:
+  VICTORY:
+  DEFEAT:
+  FINAL_WORDS:
+location:
+  x:
+  y:

@@ -1,8 +1,8 @@
 package critter.crazeproject.models;
 
-public class Map {
+public class Zone {
     private char[][] mapLayout;
-    public Map(char[][] tiles) {
+    public Zone(char[][] tiles) {
         this.mapLayout = tiles;
     }
     public char[][] getMapLayout() {

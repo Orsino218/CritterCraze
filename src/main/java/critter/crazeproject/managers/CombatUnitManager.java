@@ -34,10 +34,7 @@ public class CombatUnitManager {
         catch(Exception e){}
     }
 
-
     public CombatUnit getUnitByName(String unitName) {
         return units.get(unitName);
     }
-
-
 }

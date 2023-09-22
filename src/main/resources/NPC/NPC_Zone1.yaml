@@ -17,27 +17,37 @@ location:
   y: 8
 ---
 # Character 2
-name:
-reward:
+name: Unicorn
+reward: { }
 dialogue:
   GREETING:
+    - I'm a magical unicorn!
   BATTLE:
+    - I will fight you with cotton candy!
   VICTORY:
+    - I am the most powerful creature in the land!
   DEFEAT:
+    - No!!!!!! My powers are weaker now!
   FINAL_WORDS:
+    - Next time I'll fight you with glitter!
 location:
-  x:
-  y:
+  x: 2
+  y: 3
 ---
 # Character 3
-name:
-reward:
+name: Flying Squirrel
+reward: { }
 dialogue:
   GREETING:
+    - SWOOOOOSH! I can fly!
   BATTLE:
+    - You better watch out, because I can crash into you!
   VICTORY:
+    - I'm fast! GOTCHA!
   DEFEAT:
+    - You got me!!!!
   FINAL_WORDS:
+    - Next time I'll be sure to get you!
 location:
-  x:
-  y:
+  x: 7
+  y: 10

@@ -1,14 +1,18 @@
 package critter.crazeproject.models;
 
+import java.util.List;
+
 public class Zone {
-    private char[][] mapLayout;
-    public Zone(char[][] tiles) {
-        this.mapLayout = tiles;
+    private char[][] zoneLayout;
+    private List<NPC> npcs;
+    public Zone(char[][] tiles, List<NPC> npcs) {
+        this.zoneLayout = tiles;
+        this.npcs = npcs;
     }
-    public char[][] getMapLayout() {
-        return mapLayout;
+    public char[][] getZoneLayout() {
+        return zoneLayout;
     }
-    public void setMapLayout(char[][] mapLayout) {
-        this.mapLayout = mapLayout;
+    public void setZoneLayout(char[][] zoneLayout) {
+        this.zoneLayout = zoneLayout;
     }
 }

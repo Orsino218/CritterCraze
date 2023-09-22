@@ -20,6 +20,7 @@ public class GameWindow extends JFrame {
         remove(currentView);
         this.currentView = newView;
         add(currentView);
+        revalidate();
     }
 
 }

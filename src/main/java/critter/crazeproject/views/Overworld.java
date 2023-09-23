@@ -41,27 +41,35 @@ public class Overworld extends JPanel {
         if (scrollY > currentZone.getZoneLayout().length - tileHeight)
             scrollY = currentZone.getZoneLayout().length - tileHeight;
 
+        UnitLocation scrollPosition = new UnitLocation(scrollX, scrollY);
 
         Image atlas = ImageManager.manager.getAnImage("tile_atlas.png");
         for (int x = Math.max(0, scrollX); x < tileWidth + scrollX; x++) {
             for (int y = Math.max(0, scrollY); y < tileHeight + scrollY; y++) {
                 UnitLocation atlasTile = TILES.get(currentZone.getZoneLayout()[y][x]);
-                g.drawImage(
-                        atlas,
-                        (x - scrollX) * 64 * SCALE,
-                        (y - scrollY)*64*SCALE,
-                        (x - scrollX + 1) * 64 * SCALE,
-                        (y - scrollY + 1)*64*SCALE,
-                        atlasTile.getxPosition()*64,
-                        atlasTile.getyPosition()*64,
-                        (atlasTile.getxPosition()+1)*64,
-                        (atlasTile.getyPosition()+1)*64,
-                        null
-                        );
+                draw(g, atlas, new UnitLocation(x, y), scrollPosition, atlasTile, 64);
             }
         }
 
+        Image characterSprite = ImageManager.manager.getAnImage("CharacterSprite.png");
+        draw(g, characterSprite, state.getCurrentPlayerLocation(), scrollPosition, new UnitLocation(state.getPlayerFaceDirection(), 0), 16);
 
     }
+
+    public void draw(Graphics g, Image image, UnitLocation zonePosition, UnitLocation scrollPosition, UnitLocation atlasPosition, int atlasItemSize) {
+        g.drawImage(
+                image,
+                (zonePosition.getxPosition() - scrollPosition.getxPosition()) * 64 * SCALE,
+                (zonePosition.getyPosition() - scrollPosition.getyPosition()) * 64 * SCALE,
+                (zonePosition.getxPosition() - scrollPosition.getxPosition() + 1) * 64 * SCALE,
+                (zonePosition.getyPosition() - scrollPosition.getyPosition() + 1) * 64 * SCALE,
+                atlasPosition.getxPosition() * atlasItemSize,
+                atlasPosition.getyPosition() * atlasItemSize,
+                (atlasPosition.getxPosition() + 1) * atlasItemSize,
+                (atlasPosition.getyPosition() + 1) * atlasItemSize,
+                null
+        );
+    }
+
 
 }

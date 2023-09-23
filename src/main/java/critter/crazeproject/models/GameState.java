@@ -5,6 +5,7 @@ import java.util.Map;
 public class GameState {
     private String saveFileName;
     private UnitLocation currentPlayerLocation;
+    private int playerFaceDirection;
     private BattleRecord battleRecord;
     private Wallet playerWallet;
 
@@ -38,5 +39,13 @@ public class GameState {
 
     public void setPlayerWallet(Wallet playerWallet) {
         this.playerWallet = playerWallet;
+    }
+
+    public int getPlayerFaceDirection() {
+        return playerFaceDirection;
+    }
+
+    public void setPlayerFaceDirection(int playerFaceDirection) {
+        this.playerFaceDirection = playerFaceDirection;
     }
 }

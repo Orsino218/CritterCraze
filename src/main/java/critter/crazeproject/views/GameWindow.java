@@ -12,7 +12,8 @@ public class GameWindow extends JFrame {
         setTitle("Critter Craze");
         setSize(1000,1000);
 
-        this.currentView = TitleScreen.titleScreen;
+        TitleScreen title = new TitleScreen();
+        this.currentView = title;
         add(currentView);
     }
 

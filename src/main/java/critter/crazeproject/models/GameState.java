@@ -8,8 +8,35 @@ public class GameState {
     private BattleRecord battleRecord;
     private Wallet playerWallet;
 
-    public String getFileName() {
-        return this.saveFileName;
+    public String getSaveFileName() {
+        return saveFileName;
     }
 
+    public void setSaveFileName(String saveFileName) {
+        this.saveFileName = saveFileName;
+    }
+
+    public UnitLocation getCurrentPlayerLocation() {
+        return currentPlayerLocation;
+    }
+
+    public void setCurrentPlayerLocation(UnitLocation currentPlayerLocation) {
+        this.currentPlayerLocation = currentPlayerLocation;
+    }
+
+    public BattleRecord getBattleRecord() {
+        return battleRecord;
+    }
+
+    public void setBattleRecord(BattleRecord battleRecord) {
+        this.battleRecord = battleRecord;
+    }
+
+    public Wallet getPlayerWallet() {
+        return playerWallet;
+    }
+
+    public void setPlayerWallet(Wallet playerWallet) {
+        this.playerWallet = playerWallet;
+    }
 }

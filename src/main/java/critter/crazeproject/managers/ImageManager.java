@@ -17,7 +17,7 @@ public class ImageManager {
         this.images = new HashMap<>();
     }
 
-    public Image getAnImage(String imageName) throws IOException {
+    public Image getAnImage(String imageName) {
         Image pic = images.get(imageName);
         if (pic != null) {
             return pic;
@@ -29,7 +29,7 @@ public class ImageManager {
             return newPic;
         }
         catch(IOException e) {
-            throw new IOException("Unable to load image");
+            throw new RuntimeException("Unable to load image");
         }
     }
 

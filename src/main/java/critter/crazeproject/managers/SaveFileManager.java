@@ -24,7 +24,7 @@ public class SaveFileManager {
         GameState state = Game.getGame().getGameState();
         String serializedGameState = gson.toJson(state);
 
-        try (FileWriter writer = new FileWriter(state.getFileName());
+        try (FileWriter writer = new FileWriter(state.getSaveFileName());
                 BufferedWriter bWriter = new BufferedWriter(writer)) {
             bWriter.write(serializedGameState);
         }

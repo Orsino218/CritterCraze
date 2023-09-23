@@ -13,8 +13,8 @@ dialogue:
   FINAL_WORDS:
     - GRR!! I'll get you next time!
 location:
-  x: 6
-  y: 8
+  xPosition: 6
+  yPosition: 8
 ---
 # Character 2
 name: Unicorn
@@ -31,8 +31,8 @@ dialogue:
   FINAL_WORDS:
     - Next time I'll fight you with glitter!
 location:
-  x: 2
-  y: 3
+  xPosition: 2
+  yPosition: 3
 ---
 # Character 3
 name: Flying Squirrel
@@ -49,5 +49,5 @@ dialogue:
   FINAL_WORDS:
     - Next time I'll be sure to get you!
 location:
-  x: 7
-  y: 10
+  xPosition: 7
+  yPosition: 10

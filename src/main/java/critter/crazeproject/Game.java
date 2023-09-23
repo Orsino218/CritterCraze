@@ -1,6 +1,7 @@
 package critter.crazeproject;
 
 import critter.crazeproject.models.GameState;
+import critter.crazeproject.models.UnitLocation;
 import critter.crazeproject.views.GameWindow;
 
 import java.awt.*;

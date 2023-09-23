@@ -7,9 +7,8 @@ import java.awt.*;
 import java.awt.event.MouseListener;
 
 public class TitleScreen extends JPanel {
-    public static final TitleScreen titleScreen = new TitleScreen();
 
-    private TitleScreen() {
+    public TitleScreen() {
         GridLayout layout = new GridLayout(4,1);
         setLayout(layout);
 

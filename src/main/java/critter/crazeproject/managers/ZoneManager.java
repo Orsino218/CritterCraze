@@ -28,7 +28,7 @@ public class ZoneManager {
             return new Zone(zoneLayout.toArray(new char[0][]), loadZoneNPCs(zoneName));
         }
         catch(Exception e){
-            throw new RuntimeException("Unable to load zone");
+            throw new RuntimeException("Unable to load zone", e);
         }
     }
     public List<NPC> loadZoneNPCs(String zoneName){

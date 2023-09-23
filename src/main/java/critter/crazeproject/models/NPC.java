@@ -4,10 +4,10 @@ import java.util.List;
 import java.util.Map;
 
 public class NPC {
-    private String name;
-    private Reward reward;
-    private Map<DialogueType, List<String>> dialogue;
-    private UnitLocation location;
+    public String name;
+    public Reward reward;
+    public Map<DialogueType, List<String>> dialogue;
+    public UnitLocation location;
 
     public String getName() { return name; }
 

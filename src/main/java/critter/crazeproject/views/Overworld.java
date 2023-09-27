@@ -12,7 +12,7 @@ import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Overworld extends JPanel {
+public class Overworld extends JPanel implements KeyboardUser {
     private int SCALE = 1;
     private Zone currentZone;
     private final Map<Character, UnitLocation> TILES = Map.of(
@@ -71,5 +71,30 @@ public class Overworld extends JPanel {
         );
     }
 
+
+    @Override
+    public void handleKeyPress(String input) {
+        switch (input) {
+            case "Up", "W" -> movePlayer(0, -1, 2);
+            case "Down", "S" -> movePlayer(0, 1, 0);
+            case "Left", "A" -> movePlayer(-1, 0, 3);
+            case "Right", "D" -> movePlayer(1, 0, 1);
+//            case "Escape" -> ;
+        }
+
+    }
+
+    private void movePlayer(int xChange, int yChange, int newPlayerFaceDirection) {
+        UnitLocation currentLocation = Game.getGame().getGameState().getCurrentPlayerLocation();
+        currentLocation.setxPosition(currentLocation.getxPosition() + xChange);
+        currentLocation.setyPosition(currentLocation.getyPosition() + yChange);
+        if (currentZone.getCollisionMap()[currentLocation.getyPosition()][currentLocation.getxPosition()]) {
+            currentLocation.setxPosition(currentLocation.getxPosition() - xChange);
+            currentLocation.setyPosition(currentLocation.getyPosition() - yChange);
+        }
+
+        Game.getGame().getGameState().setPlayerFaceDirection(newPlayerFaceDirection);
+        repaint();
+    }
 
 }

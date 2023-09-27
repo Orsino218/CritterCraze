@@ -3,7 +3,7 @@ package critter.crazeproject.views;
 import javax.swing.*;
 
 public class GameWindow extends JFrame {
-    public static final JFrame window = new GameWindow();
+    public static final GameWindow window = new GameWindow();
     public JPanel currentView;
 
     private GameWindow() {

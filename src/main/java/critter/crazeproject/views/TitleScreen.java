@@ -1,10 +1,9 @@
 package critter.crazeproject.views;
 
-import critter.crazeproject.MouseReader;
+import critter.crazeproject.listeners.MouseReader;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseListener;
 
 public class TitleScreen extends JPanel {
 

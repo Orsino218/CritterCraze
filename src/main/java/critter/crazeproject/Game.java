@@ -1,5 +1,8 @@
 package critter.crazeproject;
 
+import com.github.kwhat.jnativehook.GlobalScreen;
+import com.github.kwhat.jnativehook.NativeHookException;
+import critter.crazeproject.listeners.KeyboardReader;
 import critter.crazeproject.models.GameState;
 import critter.crazeproject.models.UnitLocation;
 import critter.crazeproject.views.GameWindow;
@@ -23,8 +26,15 @@ public class Game {
     }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         EventQueue.invokeLater(() -> GameWindow.window.setVisible(true));
+
+        GlobalScreen.registerNativeHook();
+        KeyboardReader keyboardReader = new KeyboardReader();
+        GlobalScreen.addNativeKeyListener(keyboardReader);
+
+
+
     }
 
 }

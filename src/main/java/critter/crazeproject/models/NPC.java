@@ -7,7 +7,8 @@ public class NPC {
     public String name;
     public Reward reward;
     public Map<DialogueType, List<String>> dialogue;
-    public UnitLocation location;
+    public UnitLocation zoneLocation;
+    public UnitLocation atlasLocation;
 
     public String getName() { return name; }
 
@@ -19,7 +20,11 @@ public class NPC {
         return dialogue;
     }
 
-    public UnitLocation getLocation() {
-        return location;
+    public UnitLocation getZoneLocation() {
+        return zoneLocation;
+    }
+
+    public UnitLocation getAtlasLocation() {
+        return atlasLocation;
     }
 }

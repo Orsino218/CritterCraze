@@ -17,7 +17,7 @@ public class Zone {
             }
         }
         for (NPC item: npcs) {
-            collisionMap[item.getLocation().getyPosition()][item.getLocation().getxPosition()] = true;
+            collisionMap[item.getZoneLocation().getyPosition()][item.getZoneLocation().getxPosition()] = true;
         }
 
     }

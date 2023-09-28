@@ -12,8 +12,8 @@ public class KeyboardReader implements NativeKeyListener {
     @Override
     public void nativeKeyPressed(NativeKeyEvent e) {
         if (GameWindow.window.currentView instanceof KeyboardUser) {
-            String result = NativeKeyEvent.getKeyText(e.getKeyCode());
-            ((KeyboardUser) GameWindow.window.currentView).handleKeyPress(result);
+            String keyPressed = NativeKeyEvent.getKeyText(e.getKeyCode());
+            ((KeyboardUser) GameWindow.window.currentView).handleKeyPress(keyPressed);
         }
     }
 

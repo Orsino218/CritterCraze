@@ -6,10 +6,10 @@ import critter.crazeproject.managers.ZoneManager;
 import critter.crazeproject.models.GameState;
 import critter.crazeproject.models.UnitLocation;
 import critter.crazeproject.models.Zone;
+import critter.crazeproject.models.NPC;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.HashMap;
 import java.util.Map;
 
 public class Overworld extends JPanel implements KeyboardUser {
@@ -53,6 +53,12 @@ public class Overworld extends JPanel implements KeyboardUser {
 
         Image characterSprite = ImageManager.manager.getAnImage("CharacterSprite.png");
         draw(g, characterSprite, state.getCurrentPlayerLocation(), scrollPosition, new UnitLocation(state.getPlayerFaceDirection(), 0), 16);
+
+        Image humanSprites = ImageManager.manager.getAnImage("AllHumanSprites.png");
+        for (NPC npc : currentZone.getNpcs()) {
+            draw(g, humanSprites, npc.getZoneLocation(), scrollPosition, npc.getAtlasLocation(), 16);
+        }
+
 
     }
 

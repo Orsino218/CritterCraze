@@ -14,7 +14,7 @@ dialogue:
     - GRR!! I'll get you next time!
 zoneLocation:
   xPosition: 6
-  yPosition: 0
+  yPosition: 1
 atlasLocation:
   xPosition: 0
   yPosition: 3

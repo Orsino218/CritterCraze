@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class GameWindow extends JFrame {
     public static final GameWindow window = new GameWindow();
-    public JPanel currentView;
+    public JComponent currentView;
 
 
     private GameWindow() {
@@ -17,7 +17,7 @@ public class GameWindow extends JFrame {
         add(currentView);
     }
 
-    public void changeView(JPanel newView) {
+    public void changeView(JComponent newView) {
         remove(currentView);
         this.currentView = newView;
         add(currentView);

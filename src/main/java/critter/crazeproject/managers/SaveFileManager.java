@@ -24,7 +24,7 @@ public class SaveFileManager {
         GameState state = Game.getGame().getGameState();
         String serializedGameState = gson.toJson(state);
 
-        try (FileWriter writer = new FileWriter(state.getSaveFileName());
+        try (FileWriter writer = new FileWriter(SAVE_DIRECTORY + state.getSaveFileName());
                 BufferedWriter bWriter = new BufferedWriter(writer)) {
             bWriter.write(serializedGameState);
         }
@@ -48,13 +48,13 @@ public class SaveFileManager {
     }
 
     public GameState loadGame(String fileName) throws Exception {
-        try (FileReader reader = new FileReader(fileName);
+        try (FileReader reader = new FileReader(SAVE_DIRECTORY + fileName);
              BufferedReader bReader = new BufferedReader(reader)) {
             String serialized = bReader.readLine();
             return gson.fromJson(serialized, GameState.class);
         }
         catch(Exception e) {
-            throw new Exception("Sorry, this save game can't be loaded");
+            throw new Exception("Sorry, this save game can't be loaded", e);
         }
     }
 

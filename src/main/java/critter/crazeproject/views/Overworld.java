@@ -31,44 +31,48 @@ public class Overworld extends JPanel implements KeyboardUser {
     @Override
     public void paint(Graphics g) {
         GameState state = Game.getGame().getGameState();
-        Dimension windowSize = this.getSize();
-        int windowTileWidth = (int) Math.ceil(windowSize.getWidth() / SCALE);
-        int windowTileHeight = (int) Math.ceil(windowSize.getHeight() / SCALE);
+        Dimension currentWindowSize = this.getSize();
 
-        double scrollX = (state.getCurrentPlayerLocation().getxPosition() + 0.5) * SCALE - windowSize.getWidth() / 2;
+        double scrollX = (state.getCurrentPlayerLocation().getxPosition() + 0.5) * SCALE - currentWindowSize.getWidth() / 2;
+        if (scrollX > currentZone.getZoneLayout()[0].length * SCALE - currentWindowSize.getWidth()) {
+            scrollX = currentZone.getZoneLayout()[0].length * SCALE - currentWindowSize.getWidth();
+        }
         if (scrollX < 0) scrollX = 0;
-        if (scrollX > currentZone.getZoneLayout()[0].length * SCALE - windowSize.getWidth())
-            scrollX = currentZone.getZoneLayout()[0].length * SCALE - windowSize.getWidth();
 
-        double scrollY = (state.getCurrentPlayerLocation().getyPosition() + 0.5) * SCALE - windowSize.getHeight() / 2;
+        double scrollY = (state.getCurrentPlayerLocation().getyPosition() + 0.5) * SCALE - currentWindowSize.getHeight() / 2;
+        if (scrollY > currentZone.getZoneLayout().length * SCALE - currentWindowSize.getHeight()) {
+            scrollY = currentZone.getZoneLayout().length * SCALE - currentWindowSize.getHeight();
+        }
         if (scrollY < 0) scrollY = 0;
-        if (scrollY > currentZone.getZoneLayout().length * SCALE - windowSize.getHeight())
-            scrollY = currentZone.getZoneLayout().length * SCALE - windowSize.getHeight();
 
-        //scroll position in tiles (top left tile) --This: What is the tile to start drawing out of
-        UnitLocation firstTile = new UnitLocation((int) scrollX / SCALE, (int) scrollY / SCALE);
+        UnitLocation scrollPositionPixel = new UnitLocation((int) scrollX, (int) scrollY);
 
-        //bottom right tile of current view
-        UnitLocation lastTile = new UnitLocation((int) (scrollX + windowSize.getWidth() - 1) / SCALE, (int) (scrollY + windowSize.getHeight() - 1) / SCALE);
+        //the first zone tile to be drawn in the current view
+        UnitLocation firstZoneTile = new UnitLocation((int) scrollX / SCALE, (int) scrollY / SCALE);
 
-        //scroll position in pixels (pixel position you're drawing to the top left of screen) --This: Where to actually start drawing
-        UnitLocation scrollPositionPixels = new UnitLocation((int) scrollX, (int) scrollY);
+        //the last zonbe tile to be drawn in the current view
+        UnitLocation lastZoneTile = new UnitLocation((int) (scrollX + currentWindowSize.getWidth() - 1) / SCALE, (int) (scrollY + currentWindowSize.getHeight() - 1) / SCALE);
 
         Image atlas = ImageManager.manager.getAnImage("tile_atlas.png");
-
-        for (int x = firstTile.getxPosition(); x <= lastTile.getxPosition(); x++) {
-            for (int y = firstTile.getyPosition(); y <= lastTile.getyPosition(); y++) {
-                UnitLocation atlasTile = TILES.get(currentZone.getZoneLayout()[y][x]);
-                draw(g, atlas, new UnitLocation(x, y), scrollPositionPixels, atlasTile, 64, 64);
+        for (int x = firstZoneTile.getxPosition(); x <= lastZoneTile.getxPosition(); x++) {
+            for (int y = firstZoneTile.getyPosition(); y <= lastZoneTile.getyPosition(); y++) {
+                UnitLocation atlasTile;
+                if (x >= currentZone.getZoneLayout()[0].length || y >= currentZone.getZoneLayout().length) {
+                    atlasTile = TILES.get('1');
+                }
+                else {
+                    atlasTile = TILES.get(currentZone.getZoneLayout()[y][x]);
+                }
+                draw(g, atlas, new UnitLocation(x, y), scrollPositionPixel, atlasTile, 64, 64);
             }
         }
 
         Image characterSprite = ImageManager.manager.getAnImage("CharacterSprite.png");
-        draw(g, characterSprite, state.getCurrentPlayerLocation(), scrollPositionPixels, new UnitLocation(state.getPlayerFaceDirection(), 0), 16, 17);
+        draw(g, characterSprite, state.getCurrentPlayerLocation(), scrollPositionPixel, new UnitLocation(state.getPlayerFaceDirection(), 0), 16, 17);
 
         Image humanSprites = ImageManager.manager.getAnImage("AllHumanSprites.png");
         for (NPC npc : currentZone.getNpcs()) {
-            draw(g, humanSprites, npc.getZoneLocation(), scrollPositionPixels, npc.getAtlasLocation(), 48, 51);
+            draw(g, humanSprites, npc.getZoneLocation(), scrollPositionPixel, npc.getAtlasLocation(), 48, 51);
         }
 
 
@@ -97,7 +101,7 @@ public class Overworld extends JPanel implements KeyboardUser {
             case "Down", "S" -> movePlayer(0, 1, 0);
             case "Left", "A" -> movePlayer(-1, 0, 3);
             case "Right", "D" -> movePlayer(1, 0, 1);
-//            case "Escape" -> ;
+            case "Escape" -> openInGameMenu();
         }
 
     }
@@ -113,6 +117,10 @@ public class Overworld extends JPanel implements KeyboardUser {
 
         Game.getGame().getGameState().setPlayerFaceDirection(newPlayerFaceDirection);
         repaint();
+    }
+
+    private void openInGameMenu() {
+        GameWindow.window.changeView(new InGameMenu());
     }
 
 }

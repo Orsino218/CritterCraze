@@ -15,37 +15,28 @@ public class TitleScreen extends JPanel {
         GridLayout layout = new GridLayout(4, 1);
         setLayout(layout);
 
+        //1
         JLabel title = new JLabel("Critter Craze");
         title.setHorizontalAlignment(SwingConstants.CENTER);
         add(title);
 
+        //2
         JButton newGameButton = new JButton("New Game");
-        JButton continueGameButton = new JButton("Continue Game");
-        JButton exitButton = new JButton("Exit Game");
-
-        add(newGameButton);
-        add(continueGameButton);
-        add(exitButton);
-
-        MouseReader newGameButtonListener = new MouseReader((x, y) -> startNewGame());
+        MouseReader newGameButtonListener = new MouseReader((x, y) -> GameWindow.window.changeView(new NewGamePrompt()));
         newGameButton.addMouseListener(newGameButtonListener);
+        add(newGameButton);
 
+        //3
+        JButton continueGameButton = new JButton("Continue Game");
+        MouseReader continueGameButtonListener = new MouseReader((x, y) -> GameWindow.window.changeView(new ContinueMenu()));
+        continueGameButton.addMouseListener(continueGameButtonListener);
+        add(continueGameButton);
+
+        //4
+        JButton exitButton = new JButton("Exit Game");
         MouseReader exitButtonListener = new MouseReader((x, y) -> System.exit(0));
         exitButton.addMouseListener(exitButtonListener);
-
-
-    }
-
-    public static void startNewGame() {
-        GameState state = new GameState();
-        state.setSaveFileName("test01");
-        state.setCurrentPlayerLocation(new UnitLocation(6, 10));
-        state.setPlayerFaceDirection(0);
-        state.setCurrentZone("Zone1");
-
-        Game.getGame().setGameState(state);
-
-        GameWindow.window.changeView(new Overworld());
+        add(exitButton);
     }
 
 

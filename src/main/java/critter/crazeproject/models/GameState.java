@@ -8,7 +8,7 @@ public class GameState {
     private int playerFaceDirection;
 //    private BattleRecord battleRecord;
 //    private Wallet playerWallet;
-    private Zone currentZone;
+    private String currentZone;
 
     public String getSaveFileName() {
         return saveFileName;
@@ -50,11 +50,11 @@ public class GameState {
         this.playerFaceDirection = playerFaceDirection;
     }
 
-    public Zone getCurrentZone() {
+    public String getCurrentZone() {
         return currentZone;
     }
 
-    public void setCurrentZone(Zone currentZone) {
+    public void setCurrentZone(String currentZone) {
         this.currentZone = currentZone;
     }
 }

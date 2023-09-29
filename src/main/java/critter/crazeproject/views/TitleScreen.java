@@ -41,12 +41,11 @@ public class TitleScreen extends JPanel {
         state.setSaveFileName("test01");
         state.setCurrentPlayerLocation(new UnitLocation(6, 10));
         state.setPlayerFaceDirection(0);
-        state.setCurrentZone(ZoneManager.manager.loadZone("Zone1"));
+        state.setCurrentZone("Zone1");
 
         Game.getGame().setGameState(state);
 
-        GameWindow.window.OVERWORLD.setCurrentZone("Zone1");
-        GameWindow.window.changeView(GameWindow.window.OVERWORLD);
+        GameWindow.window.changeView(new Overworld());
     }
 
 

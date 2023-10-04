@@ -13,8 +13,6 @@ public class InGameMenu extends JSplitPane {
         setLeftComponent(createLeftPane());
         setRightComponent(createRightPane());
         setEnabled(false);
-
-
     }
 
     @Override

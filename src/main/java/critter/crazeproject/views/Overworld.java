@@ -59,8 +59,7 @@ public class Overworld extends JPanel implements KeyboardUser {
                 UnitLocation atlasTile;
                 if (x >= currentZone.getZoneLayout()[0].length || y >= currentZone.getZoneLayout().length) {
                     atlasTile = TILES.get('1');
-                }
-                else {
+                } else {
                     atlasTile = TILES.get(currentZone.getZoneLayout()[y][x]);
                 }
                 draw(g, atlas, new UnitLocation(x, y), scrollPositionPixel, atlasTile, 64, 64);
@@ -78,9 +77,9 @@ public class Overworld extends JPanel implements KeyboardUser {
 
     }
 
-    public void draw(Graphics g, Image image, UnitLocation zonePosition, UnitLocation scrollPosition, UnitLocation atlasPosition, int atlasItemXSize, int atlasItemYSize) {
+    public void draw(Graphics g, Image atlas, UnitLocation zonePosition, UnitLocation scrollPosition, UnitLocation atlasPosition, int atlasItemXSize, int atlasItemYSize) {
         g.drawImage(
-                image,
+                atlas,
                 (zonePosition.getxPosition()) * SCALE - scrollPosition.getxPosition(),
                 (zonePosition.getyPosition()) * SCALE - scrollPosition.getyPosition(),
                 (zonePosition.getxPosition() + 1) * SCALE - scrollPosition.getxPosition(),

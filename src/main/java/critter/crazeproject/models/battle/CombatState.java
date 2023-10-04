@@ -1,26 +1,38 @@
 package critter.crazeproject.models.battle;
 
 public class CombatState {
-    private BattleStatus playerStatus;
-    private BattleStatus opponentStatus;
-    private Battlefield battlefield;
+    private BattleParticipant player;
+    private BattleParticipant opponent;
+    private int selectedLane;
 
 
-    public CombatState(int playerHP, int enemyHP){
-        this.playerStatus = new BattleStatus(playerHP, 0);
-        this.opponentStatus = new BattleStatus(enemyHP, 0);
-        this.battlefield = new Battlefield();
+    public CombatState(){
+        this.player = new BattleParticipant();
+        this.opponent = new BattleParticipant();
+        this.selectedLane = 1;
     }
 
-    public BattleStatus getPlayerStatus() {
-        return playerStatus;
+    public BattleParticipant getPlayer() {
+        return player;
     }
 
-    public BattleStatus getOpponentStatus() {
-        return opponentStatus;
+    public void setPlayer(BattleParticipant player) {
+        this.player = player;
     }
 
-    public Battlefield getBattlefield() {
-        return battlefield;
+    public BattleParticipant getOpponent() {
+        return opponent;
+    }
+
+    public void setOpponent(BattleParticipant opponent) {
+        this.opponent = opponent;
+    }
+
+    public int getSelectedLane() {
+        return selectedLane;
+    }
+
+    public void setSelectedLane(int selectedLane) {
+        this.selectedLane = selectedLane;
     }
 }

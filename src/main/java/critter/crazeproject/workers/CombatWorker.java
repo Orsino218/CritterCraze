@@ -21,8 +21,8 @@ public class CombatWorker extends SwingWorker<Void, Boolean> {
         while (!isCancelled()) {
 
             //increment resources
-            combatState.getPlayerStatus().gainResource();
-            combatState.getOpponentStatus().gainResource();
+            combatState.getPlayer().gainResource();
+            combatState.getOpponent().gainResource();
 
             //handle enemy battle commands
             handleEnemySpawnLogic();

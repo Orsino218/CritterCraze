@@ -1,14 +1,16 @@
 package critter.crazeproject.models;
 
+import critter.crazeproject.models.battle.CombatUnit;
+
+import java.util.List;
 import java.util.Map;
 
 public class GameState {
     private String saveFileName;
     private UnitLocation currentPlayerLocation;
     private int playerFaceDirection;
-//    private BattleRecord battleRecord;
-//    private Wallet playerWallet;
     private String currentZone;
+    private List<CombatUnit> playerAvailableUnits;
 
     public String getSaveFileName() {
         return saveFileName;
@@ -26,22 +28,6 @@ public class GameState {
         this.currentPlayerLocation = currentPlayerLocation;
     }
 
-//    public BattleRecord getBattleRecord() {
-//        return battleRecord;
-//    }
-//
-//    public void setBattleRecord(BattleRecord battleRecord) {
-//        this.battleRecord = battleRecord;
-//    }
-
-//    public Wallet getPlayerWallet() {
-//        return playerWallet;
-//    }
-//
-//    public void setPlayerWallet(Wallet playerWallet) {
-//        this.playerWallet = playerWallet;
-//    }
-
     public int getPlayerFaceDirection() {
         return playerFaceDirection;
     }
@@ -56,5 +42,13 @@ public class GameState {
 
     public void setCurrentZone(String currentZone) {
         this.currentZone = currentZone;
+    }
+
+    public List<CombatUnit> getPlayerAvailableUnits() {
+        return playerAvailableUnits;
+    }
+
+    public void setPlayerAvailableUnits(List<CombatUnit> playerAvailableUnits) {
+        this.playerAvailableUnits = playerAvailableUnits;
     }
 }

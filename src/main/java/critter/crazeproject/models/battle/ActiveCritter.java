@@ -11,6 +11,7 @@ public class ActiveCritter {
     private double attackRate;
     private String imageName;
     private UnitLocation distAndLane;
+    private ActiveCritter attackTarget;
 
     public ActiveCritter(CombatUnit combatUnit, UnitLocation location) {
         this.name = combatUnit.getName();
@@ -76,5 +77,13 @@ public class ActiveCritter {
 
     public void setDistAndLane(UnitLocation distAndLane) {
         this.distAndLane = distAndLane;
+    }
+
+    public ActiveCritter getAttackTarget() {
+        return attackTarget;
+    }
+
+    public void setAttackTarget(ActiveCritter attackTarget) {
+        this.attackTarget = attackTarget;
     }
 }

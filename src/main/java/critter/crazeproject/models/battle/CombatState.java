@@ -1,14 +1,21 @@
 package critter.crazeproject.models.battle;
 
+import critter.crazeproject.Game;
+import critter.crazeproject.managers.CombatUnitManager;
+import critter.crazeproject.models.GameState;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class CombatState {
     private BattleParticipant player;
     private BattleParticipant opponent;
     private int selectedLane;
 
 
-    public CombatState(){
-        this.player = new BattleParticipant();
-        this.opponent = new BattleParticipant();
+    public CombatState(List<CombatUnit> playerAvailableUnits, List<CombatUnit> opponentAvailableUnits){
+        this.player = new BattleParticipant(playerAvailableUnits);
+        this.opponent = new BattleParticipant(opponentAvailableUnits);
         this.selectedLane = 1;
     }
 

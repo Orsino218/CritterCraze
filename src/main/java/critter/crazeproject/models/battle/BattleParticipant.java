@@ -1,14 +1,19 @@
 package critter.crazeproject.models.battle;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BattleParticipant {
     private int health;
     private int resource;
     private List<CombatUnit> availableUnits;
-    private List<ActiveCritter> activeUnits;
+    private List<ActiveCritter> activeCritters;
 
-    public BattleParticipant() {
+    public BattleParticipant(List<CombatUnit> availableUnits) {
+        this.availableUnits = availableUnits;
+        this.activeCritters = new ArrayList<>();
+        this.health = 100;
+        this.resource = 0;
     }
 
     public void gainResource() {
@@ -41,14 +46,14 @@ public class BattleParticipant {
         this.availableUnits = availableUnits;
     }
 
-    public List<ActiveCritter> getActiveUnits() {
-        return activeUnits;
+    public List<ActiveCritter> getActiveCritters() {
+        return activeCritters;
     }
 
-    public void setActiveUnits(List<ActiveCritter> activeUnits) {
-        this.activeUnits = activeUnits;
+    public void setActiveCritters(List<ActiveCritter> activeCritters) {
+        this.activeCritters = activeCritters;
     }
     public void spawnUnit(ActiveCritter unit) {
-        this.activeUnits.add(unit);
+        this.activeCritters.add(unit);
     }
 }

@@ -1,15 +1,20 @@
 package critter.crazeproject.views;
 
 import critter.crazeproject.Game;
+import critter.crazeproject.managers.CombatUnitManager;
 import critter.crazeproject.managers.ImageManager;
 import critter.crazeproject.managers.ZoneManager;
 import critter.crazeproject.models.GameState;
 import critter.crazeproject.models.UnitLocation;
 import critter.crazeproject.models.Zone;
 import critter.crazeproject.models.NPC;
+import critter.crazeproject.models.battle.CombatState;
+import critter.crazeproject.models.battle.CombatUnit;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class Overworld extends JPanel implements KeyboardUser {
@@ -50,7 +55,7 @@ public class Overworld extends JPanel implements KeyboardUser {
         //the first zone tile to be drawn in the current view
         UnitLocation firstZoneTile = new UnitLocation((int) scrollX / SCALE, (int) scrollY / SCALE);
 
-        //the last zonbe tile to be drawn in the current view
+        //the last zone tile to be drawn in the current view
         UnitLocation lastZoneTile = new UnitLocation((int) (scrollX + currentWindowSize.getWidth() - 1) / SCALE, (int) (scrollY + currentWindowSize.getHeight() - 1) / SCALE);
 
         Image atlas = ImageManager.manager.getAnImage("tile_atlas.png");
@@ -101,6 +106,7 @@ public class Overworld extends JPanel implements KeyboardUser {
             case "Left", "A" -> movePlayer(-1, 0, 3);
             case "Right", "D" -> movePlayer(1, 0, 1);
             case "Escape" -> openInGameMenu();
+            case "Space" -> interact();
         }
 
     }
@@ -120,6 +126,36 @@ public class Overworld extends JPanel implements KeyboardUser {
 
     private void openInGameMenu() {
         GameWindow.window.changeView(new InGameMenu());
+    }
+    private void interact() {
+        UnitLocation checkSpot = getCheckSpot(Game.getGame().getGameState().getPlayerFaceDirection());
+
+        for (NPC npc: currentZone.getNpcs()) {
+            if (npc.zoneLocation.equals(checkSpot)){
+                List<CombatUnit> opponentAvailableUnits = new ArrayList<>();
+                opponentAvailableUnits.add(CombatUnitManager.manager.getUnitByName("Mushroom"));
+                opponentAvailableUnits.add(CombatUnitManager.manager.getUnitByName("BlueBird"));
+                GameWindow.window.changeView(new BattleView(new CombatState(Game.getGame().getGameState().getPlayerAvailableUnits(), opponentAvailableUnits)));
+            }
+        }
+    }
+    public UnitLocation getCheckSpot(int playerFaceDirection) {
+        UnitLocation reference = Game.getGame().getGameState().getCurrentPlayerLocation();
+        switch (playerFaceDirection) {
+            case 0 -> {
+                return new UnitLocation(reference.getxPosition(), reference.getyPosition()+1);
+            }
+            case 1 -> {
+                return new UnitLocation(reference.getxPosition()+1, reference.getyPosition());
+            }
+            case 2 -> {
+                return new UnitLocation(reference.getxPosition(),reference.getyPosition()-1);
+            }
+            case 3 -> {
+                return new UnitLocation(reference.getxPosition()-1,reference.getyPosition());
+            }
+        }
+        return null;
     }
 
 }

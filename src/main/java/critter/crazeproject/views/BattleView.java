@@ -30,7 +30,7 @@ public class BattleView extends JSplitPane {
         setRightComponent(createRightPane());
         setEnabled(false);
 
-        CombatWorker worker = new CombatWorker(combatState, this);
+        CombatWorker worker = new CombatWorker(this);
         worker.execute();
     }
 

@@ -2,14 +2,11 @@ package critter.crazeproject.views;
 
 import critter.crazeproject.listeners.MouseReader;
 import critter.crazeproject.managers.ImageManager;
-import critter.crazeproject.models.UnitLocation;
 import critter.crazeproject.models.battle.ActiveCritter;
 import critter.crazeproject.models.battle.BattleParticipant;
 
 import javax.swing.*;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.awt.*;
 
 public class LanePanel extends JPanel {
@@ -43,7 +40,7 @@ public class LanePanel extends JPanel {
     }
 
     public void drawCritters(Graphics g, BattleParticipant participant) {
-        for (ActiveCritter critter : participant.getActiveUnits()) {
+        for (ActiveCritter critter : participant.getActiveCritters()) {
             if (critter.getDistAndLane().getyPosition() == laneNumber) {
 
                 int critterCurrentX = critter.getDistAndLane().getxPosition();

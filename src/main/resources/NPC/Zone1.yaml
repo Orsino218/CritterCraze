@@ -1,6 +1,5 @@
 # Character 1
 name: Troll
-reward: { }
 dialogue:
   GREETING:
     - I'm hungry!
@@ -21,7 +20,6 @@ atlasLocation:
 ---
 # Character 2
 name: Unicorn
-reward: { }
 dialogue:
   GREETING:
     - I'm a magical unicorn!
@@ -42,7 +40,6 @@ atlasLocation:
 ---
 # Character 3
 name: Flying Squirrel
-reward: { }
 dialogue:
   GREETING:
     - SWOOOOOSH! I can fly!
